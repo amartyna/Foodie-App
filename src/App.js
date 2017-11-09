@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 import './App.css';
+import * as firebase from 'firebase';
 
 class App extends Component {
 
   state = {
-    units: 1,
+    speed: 1,
   }
 
   componentDidMount() {
-    this.setState ({
-      units: 2,
-    })
-  }
+    const rootRef = firebase.database().ref();
+    const speedRef = rootRef.child('speed');
+    speedRef.on('value', snap => {
+    this.setState({
+      speed: snap.val(),
+    });
+  });
+  console.log(speedRef);
+}
+
   render() {
     return (
       <div>
-        <h1>{this.state.units}</h1>
+        <h1>{this.state.speed}</h1>
       </div>
     );
   }
