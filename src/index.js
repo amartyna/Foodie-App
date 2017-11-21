@@ -23,7 +23,9 @@ const preObject = document.getElementById('object');
 
 const dbRefObject = firebase.database().ref().child('object');
 
+console.log(dbRefObject);
 dbRefObject.on('value', snap => console.log(snap.val()));
+
 
 
 ReactDOM.render(<App />, document.getElementById('root'));

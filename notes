@@ -1,0 +1,885 @@
+
+//	HTML 5
+
+
+Poprzednia wersja opierala sie tylko na divach. 
+Html5 wprowadzila dodatkowe tagi ktore wizualnie robia to samo co div, oprocz tego wprowadzaja przeznaczenie danego tagiu. Nazwy nav, footer, header maja przeznaczenie (nawigacja, stopka itd.)
+
+____tagi________
+
+<section> sekcja
+
+<aside> treść boczna (boczny pomocniczy pasek)
+
+<nav> nawigacja
+
+<main> główna zawartość strony, w main mieszcza sie np sekcje
+
+<header> nagłówek
+
+<footer <stopka>
+
+Semantyczne tagi objasniaja przenzaczenie danej rzeczy, czyli mowic co to jest. Czytniki ekranu dla osob z niepelnosprawnosciami sa w stanie przeczytac te tagi.
+
+
+----------------------------------------------------------------------------------
+// 	MIXIN
+
+@mixin background($bg) {
+
+background: $bg;
+
+}
+
+@include background (#000, url(../img/jpg) top lef
+dziewiec
+
+----------------------------------------------------------------------------------
+
+//	PROBLEMY
+
+	"is not a function" :
+
+	1. czy moge uzywac tej fukcji?
+		no inner html na queryselectorAll - wtedy trzeba petle for
+
+	2. czy istnieje funkcja o tej nazwie?
+	3. czy funkcja wyzej jest domknięta?
+
+	________________________________
+
+	"cannot read property ... of undefined" :
+
+	Musimy zobaczyć do słowa przed.
+
+	coś.metoda 
+
+	1. czy na tym elemencie moge wywolac te metode?
+
+	________________________________
+
+	"unexpected identifier "{" :
+
+	1. sprawdź wcięcia.
+
+----------------------------------------------------------------------------------
+
+	!!!!! slint !!!!!!!
+
+----------------------------------------------------------------------------------
+
+show() - usuwa display none
+hide() - dodaje display none
+toggle() - jesli jest widoczne to dodaje jezeli ukryte to odejmuje displya none
+
+----------------------------------------------------------------------------------
+
+// 	PRZYGOTOWANIE DO ROBO :
+
+1) GULP: 
+	1. Sass (output style compresed)
+	2. Autoprefixer
+	3. Image Optimaizer
+	4. Browser Sync
+	5. Uglify
+	6. html minify*
+
+2) PODZIAŁ PLIKU W FOLDERACH:
+
+|
+styles--------scss-----------------------------style.scss
+|       |                      |
+|	|                      |--base---------variabels.scss
+|	|-----css--style.css   |         |-----mixins
+|                              |         |-----media queries 
+pages--inne strony html        |         |-----reset.scss
+|                              |
+|                              |--components---header itd.scss
+scripts--skrypty               |
+|                              |--vendor-------wszystkie inne np bootstrap.scss
+|-- index.html
+|-- gulpfile.js
+|-- node_modules
+|-- package.json
+|-- .gitignore
+
+
+	FUNKCJĄ PLIKU MAIN.CSS JEST ZAWIERANIE TYLKO IMPORTÓW
+-----------------------------------------------------------------------------------
+//	AJAX
+
+ENDPOINT - jest to punkt na serwerze który czeka na zapytanie
+
+
+
+Jak uzytkownik jest zalogowany to za kazdym przeladowaniem strony uzytkownik ejst dalej zalogowany. Dane zostaja zapisane w ciasteczkach. Sesja uzytkownika.
+
+----------------------------------------------------------------------------------
+//	API 
+
+	RESTFULL API - jak zbudowane są endpointy; metodologia.
+----------------------------------------------------------------------------------
+
+	PĘTLA W OBIEKTACH 
+//	FOR IN 
+
+	for (i in object) {
+
+		obj[i]
+
+	}
+
+----------------------------------------------------------------------------------
+//cors
+PROBLEM TYPU CORS - nie mozna sie polaczyc bo strona ma zabezpieczenia
+----------------------------------------------------------------------------------
+
+
+//				PROGRAMOWANIE
+				/	    \
+			funkcyjne	    obiektowe
+   			   |			|
+   	    jestem robotem-|			|-wszystkie zachowania sa
+  	    uzywam funkcji 			  schowane do jednego pudla
+  	    takich jakie			  (furry game)
+  	    potrzebuje
+
+
+Programowanie  f u n k c y j n e  to takie, które zakładda, że nie wiemy jakie dane wchodzą do funkcji.
+
+----------------------------------------------------------------------------------
+// prototype
+Za pomocą prototype dołączasz metody do odpowiedniego konstruktora, ale nie trzeba :D
+
+object.prototype.metoda
+
+---------------------------------------------------------------------------------
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//==============================================================================
+
+				JavaScript ES 6
+
+//==============================================================================
+		           ------------------------
+//				    METODY
+			   ------------------------
+
+
+			   
+
+//	map	forEach 
+
+	(inaczej pętla for)
+_______________________________________________________przyklad____________________
+						
+item reprezentuje element 	     		tab.map(function(item) {
+rzeczy, czyli tak jakby 	     	
+item to tab[i]					})		
+funkcja map wynik opakowuje 
+w tablice, a forEach przeiterowuje 
+uzywamy map
+
+			   
+
+//	filter			
+______________________________________________________przyklad___________________	
+					
+					var tab = [1,2,3,4]
+jezeli warunek jest			var newTab = tab.filter(function(item) {
+spelniony to funkcja
+jest spelniona				return item % 2 === 0;
+taki if					});
+
+			   
+//	sort
+________________________________________________________________________________
+
+//	reduce
+________________________________________________________________________________
+
+
+
+//Hoisting- 
+dziura w slowie var.		!!!!!! SCOPE - ogarnij książkę !!!!!!!
+Wynoszenie zmiennych do góry.
+np,
+	 console.log(imie);
+		a potem
+	 var imie = "Ola";
+	 i działa :(
+
+
+
+_________________________________________________________________________________
+			       ----------------------		
+//				DEKLARACJA ZMIENNYCH 
+			       ----------------------
+	___zmienna__________
+
+	const	BLOKOWY		oznacza, że zmienna działa między klamrami, 					wewnątrz bloku, np w if i for.
+				const musi być zdefiniowany odrazu. 
+			
+	____________________
+			
+	let	BLOKOWY		działa jak const, ale można zdefiniować później.
+
+	____________________
+
+	var	FUNKCYJNY	działa wszędzie i działa hoisting.
+
+	____________________
+
+	W skrócie:
+				- likwidujemy var,
+				- likwidujemy hoisting,
+				- wprowadzamy  let i const,
+_________________________________________________________________________________		
+			       --------------------
+//			    	FUNKCJA STRZAŁKOWA
+			       --------------------
+
+
+	Omija this za pomocą strzałki =>
+	tam gdzie jest słowo kluczowe function wskakuje this
+
+
+
+______old_style_________________________
+
+var a = function() {
+	console.log('hello');
+};
+____________________________________________________new_style____________________
+
+					const a = () => {
+
+   					console.log('hello world');
+
+					};
+					________________________________________
+
+
+					var Game = {
+						this.name = "furry";
+
+						setTimeout(() => {
+						console.log(this.name)
+						})
+					}
+
+_________________________________________________________________________________
+				-----------------
+//				TERNARY OPERATOR
+				-----------------
+
+   	 return  	a > b  ?         a     :       b
+
+	      	       warunek ? co jeśli true : co jeśli false
+
+
+Jeżeli "a" większe od "b" to zwróć "a", a jeżeli odwrotnie to "b".
+
+
+
+
+________________________________________________________________________________					
+				-----
+//				KLASY
+				-----
+
+Nazwy Klas piszemy z Wielkiej Litery!
+
+
+
+
+	class Animal {
+	    constructor() {
+		this.nogi = "4";
+		this.uszy = "2";
+	    }
+	}
+
+	const dog = new Animal;
+
+
+
+
+//		dog jest zwierzeciem i otrzymal nogi i uszy.
+
+
+
+---------------------------------------------------------------------------------
+Konstruktor jest zawsze wywoływany jak jest użyte słowo "new'.
+---------------------------------------------------------------------------------
+
+
+
+	class Animal {
+            constructor(name) {
+		this.nogi = "4";
+		this.uszy = "2";
+
+		this.name = name;
+	    }
+	}
+
+	const dog = new Animal('dog');
+
+
+
+
+		dog jest zwierzeciem i otrzymal nogi i uszy
+//		a teraz jeszcze imie "dog" zapisana pod this.name
+
+
+
+---------------------------------------------------------------------------------
+Właściwość to jest, np this.uszy, a metoda to funkcja danej klasy.
+
+Wszystkiego metody klasy tworzymy poza konstrutorem i jeżeli chcemy wywołać z automatu to wywołujemy w konstuktorze
+---------------------------------------------------------------------------------
+
+	
+
+
+	class Animal {
+	    constructor(name, sound){
+		this.nogi = "4";
+		this.uszy = "2";
+
+		this.name = name;
+		this.sound = sound;
+	    }
+
+	    getSignal() {
+		console.log(this.animalSound);
+	    }
+	}
+
+	const dog = new Animal('dog', 'hau hau');
+	console.log(dog.getSignal());
+
+	const kot = new Animal('kot', 'miau miau');
+	console.log(kot.getSignal());
+
+
+
+		dog jest zwierzeciem i otrzymal nogi i uszy
+		a teraz jeszcze imie "dog" zapisana pod this.name
+//		a teraz zaczal szczekac, bo stworzylismy w klasie metode 			getSignal() i wywolalismy ja w psie.
+
+
+
+---------------------------------------------------------------------------------
+
+//	W klasie nadrzędnej nadpisujemy konstruktor z super(); nad własnościami
+
+
+
+_______KLASA BAZOWA (NADRZĘDNA): _____
+
+
+
+	class Land {
+
+//	construkctor() {
+	   super();
+
+	      	this.nogi = "4";
+		this.uszy = "2";
+
+		this.name = name;
+		this.sound = sound;
+
+	    breath(){
+		   console.log('get breath');
+	    }
+	}
+
+
+
+//		tworze nadrzędną klasę Land w której jest metoda, że wszytko 			oddycha
+
+
+							   ^
+				    			  / \
+				    			 /___\
+						           |
+					                   | 
+					                   |
+
+
+_______KLASA PODRZĘDNA: ______________
+
+
+
+//		klasa Animal rozszerza klasę bazową czyli, każde zwierze będzie 		oddycha<div>
+  <header>
+    <ul>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </header>
+  <footer>
+    <p></p>
+  </footer>
+</div>ć, dzieczyczy po nadrzędnej
+
+
+
+	class Animal extends Land {
+
+	     constructor(name, sound) {
+
+		this.nogi = "4";
+		this.uszy = "2";
+
+		this.name = name;
+		this.sound = sound;
+	    }
+
+	     getSignal() {
+		console.log(this.animalSound);
+	     }
+	}
+
+		const dog = new Animal('dog', 'hau hau');
+		console.log(dog.getSignal());
+
+		const kot = new Animal('kot', 'miau miau');
+		console.log(kot.getSignal());
+
+
+
+________SUPER KLASA: ___________________ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+
+Jeżeli w klasie nadrzędnej i podrzędnej znajduje się właściwość o takiej samej nazwie, jak np.:
+
+	w Animal:
+		this.walkig = 'by foot'
+
+	w Land:
+		this.walkig = 'by air'
+
+
+To żeby w Animal które robi extends od Land dostać się do własności walking z land trzeba użyć zamiast this.walking super.walking
+
+_________________________________________________________________________________
+
+------------------
+// Template String 
+------------------
+
+		Pod tyldą ~  ` ` 
+
+	możemy zrobić coś takiego:
+
+	console.log(`dzisiaj jadlam ${this.type} i były smaczne`);
+
+	czyli nie strzeba poisać ('fdsjfhds' + ' dsfijdsf');
+
+_________________________________________________________________________________
+
+------------------
+// Operator Reszty
+	Spread
+------------------
+
+
+	Kopiowanie tablic
+
+	Jeżeli otrzymuje jakąś tablice,np:
+	
+		const tab = [1,2,3];
+		const tab2 = [...tab];
+
+		console.log(tab2) ->  [1,2,3]
+		Kopiowanie tablic
+
+
+
+		const tab = [1,2,3];
+		const tab2 = [4,5,6];
+		const tab3 = [...tab, ...tab2] ->połączy tab i tab2
+
+
+
+________________________________________________________________________________
+
+--------------------
+// Argumenty Domyślne
+--------------------
+
+	Jeżeli coś nie jest zdefiniowane to tym sposobem definiujemy, czyli, jak ktos zrobi funkcje i pozniej nie wywola parametru, to trzeba go zdefiniować, żeby funkcja działała. 
+Służy to zapobieganiu.
+
+	if (!a) {			inaczej a === 'undefined'
+ 	a=5;				!a
+	}
+
+		
+//w.JavaScript ES 6...
+
+
+	function something(a,b = 0) 
+
+		- jeżeli "b" nie będzie istniało to domyślnie będzie 			zero, nie trzeba używać if.
+
+________________________________________________________________________________
+
+-------------------
+// Destrukturyzacja
+-------------------
+
+	Mamy taką funkcje:
+		
+
+		function.addSomething(data){
+ 		  console.log(data.value);
+		}
+
+		____________________________
+
+Destrukturyzacja to rozbieranie obiektu w locie, działa w obrębie jednej funkcji.
+		
+
+//   		 function.addSomething({value}){
+//    		  console.log(value);
+//   		 }
+		________________________________
+
+	Wyciągamy konkretną wartość klucza:
+
+		
+
+		$.ajax({
+   		url: link
+		}).done(function(response) {
+		addSOmething(response);
+		})
+
+                ______________________________
+		
+		const obj = {
+		   name: 'Ola',
+		   age: 27
+		}
+
+		let {name: Bobek, age} = obj;
+
+		console.log(bobek) daje Ola,27
+		______________________________
+
+
+
+
+//!!!!---------------CLEAN CODE JAVASCRIPT----!CZYTAJ!--------------------!!!!!!
+________________________________________________________________________________
+
+--------------------
+// IMPORT i EKSPORT
+--------------------
+
+		importy i eksporty działają tylko z webpackiem
+
+
+	W pliku wyjściowym eksportujemy jakiś element, np obiekt"
+	
+	const object = {
+		   name: 'Ola',
+		   age: 27
+		}
+
+	export default object;
+	______________________
+
+
+	W kolejnym pliku robię:
+
+	import object from (ścieżka);
+
+	import {name} from
+	export {name}
+
+
+
+	Jeżeli nie chce z default to robię destrukturyzacje i object robię{object}, albo np {name}
+
+
+
+	const $ = require('jquery'); 
+
+
+		to to samo co
+
+	import $ from 'jquery';
+
+________________________________________________________________________________
+
+
+aria-hidden = "true"
+role = rola
+
+
+
+---------------------------------------------------------------------------------
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//===============================================================================
+
+					REACT
+
+//===============================================================================
+
+
+
+//	prompt(text)
+---------------------
+
+	Jest to funkcja wbudowana w przeglądarkę, która wyświetli okienko 		pozwalające wpisać dowolną wartość użytkownikowi. Funkcja wyświetli 		informację zawartą w parametrze `text`, kiedy użytkownik wprowadzi i 		zatwierdzi tekst, funkcja go zwróci.
+
+		let a = Number(prompt('give me A'));
+
+	Number - oznacza, że to ma być liczba,
+	prompt - wyświetl('tekst');
+
+
+
+-------------
+// KOMPONENT
+-------------
+
+	Nazwę psizemy wielką literą. 
+		
+			function HelloWorld(){
+				return <h1>Hello</h2>;
+
+	Komponent zawsze musi coś zwrócić.
+
+
+
+
+
+____________
+paginacja - przełązanie stron
+
+
+
+
+_________________________________________________________________________________
+_________________________________________________________________________________
+
+--------------------------
+// SPA
+ - single page aplication
+--------------------------
+
+
+			na podstawie url React wyswietla komponenty
+
+			przełączanie komponentów to Routing.
+
+			React Router.
+
+  import {
+    Router,
+    Link,
+    Route
+ }  from 'reacct-router';
+
+
+
+
+  class App extends React.Component {
+     render() {
+       return (
+          <h1> hello </h1>
+          <Link />
+
+// drugi sposob
+         <Linkt to="/contact> Idz do strony kontakt" </Link>
+      )
+    }
+  }
+
+
+
+   React.DOM.render (
+	<Router>
+
+	 <Route path="sciezka" component={App}/>
+	 <Route path="*" component={NotFound} /> -> strona not found
+
+
+	</ Router>,
+	document.getElementById('app')
+
+
+  );
+
+
+W prezentacji mam Router v3 a teraz jest v4
+
+
+
+
+
+class Blog extends React.Component {
+  render() {
+    return(
+      <div> 
+        <Home>
+	  <p> dfdsgsd </p>
+	  <div> fdsfsdfds </div>	
+	</Home>
+      </div>
+    )
+  }
+}
+
+class Home extends React.Component {
+  render() {
+    return(
+      <div> 
+       {this.props.children}
+      <div>
+    )
+  }
+}
+
+
+
+
+________________________________________________________________________
+
+-----------------------------------------------------
+// PARAMETRY UR- przekazywanie w aplikacjach typu SPA
+------- REACT --------------------------------------- 
+
+
+
+	<Route path="/user/:userID" component={User} />
+
+
+	 userId to parametr
+
+Parametry są to informacje, które przekazujemy do konkretnego komponentu za pomocą adresu URL
+
+
+----------------
+// QUERY STRING
+---- Przekazywanie informacji na stronach internetowych
+
+		/user?name=basia&age=24&city=Warsaw
+
+function()
+=> {
+
+ name:Basia
+ itd.
+
+}
+
+_________________________________________________________________________
+----------------
+// CALLBACK HELL
+----------------
+
+	Zjawisko w któ©ym jeden kod zależy od drugiego i się zagnieżdża,
+powoduje to spagetti
+
+
+
+
+------------
+// PROMISES
+-------- ROZWIĄZANIE PROBLEMÓW --
+
+
+		PROMISES - asynchroniczne rozwiązania
+		   |
+		   |
+		  \ /
+		   v
+ 
+		 then
+
+		   |
+		   |
+		  \ /
+		   v
+
+		 kroki ------> Event Loop
+
+
+
+
+
+		fetch() zwraca promise a promise then
+
+
+		/ fullfitted - spelniony
+	Promise - rejected   - niespelniony
+		\ pending    - trwa
+		
+
+
+
+
+
+
+
+var cos = fetch('cos');
+var znowCos = fetch('zrob znow cos');
+
+Promise.all([cos, znowCos])
+  .then(([cosZrobione, Kredki]) => {
+    console.log(cosZrobione);
+ })
+ .catch(blad => )
+
+
+
+
+
+// WSZYSTKIE ZAPYTANIA DO API WYKONUJEMY W componentDidMount
+his.textInpir - inpuel
+
+
+
+
+
+
+
+ref = { (input) -> {t
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
